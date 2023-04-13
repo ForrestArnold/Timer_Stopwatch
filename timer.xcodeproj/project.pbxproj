@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		3F78FD9E29E5E9C600122C8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F78FD9D29E5E9C600122C8C /* AppDelegate.swift */; };
 		3F78FDA029E5E9C600122C8C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F78FD9F29E5E9C600122C8C /* SceneDelegate.swift */; };
-		3F78FDA229E5E9C600122C8C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F78FDA129E5E9C600122C8C /* ViewController.swift */; };
+		3F78FDA229E5E9C600122C8C /* TimerHomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F78FDA129E5E9C600122C8C /* TimerHomeScreenViewController.swift */; };
 		3F78FDA529E5E9C600122C8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F78FDA329E5E9C600122C8C /* Main.storyboard */; };
 		3F78FDA729E5E9C700122C8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F78FDA629E5E9C700122C8C /* Assets.xcassets */; };
 		3F78FDAA29E5E9C700122C8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F78FDA829E5E9C700122C8C /* LaunchScreen.storyboard */; };
+		3F78FDB229E5F04400122C8C /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F78FDB129E5F04400122C8C /* Clock.swift */; };
+		3FE8EF9829E761C700B36BA4 /* StopWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE8EF9729E761C700B36BA4 /* StopWatchViewController.swift */; };
+		3FE8EF9A29E8A49F00B36BA4 /* oh_my_god_vine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FE8EF9929E8A49F00B36BA4 /* oh_my_god_vine.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3F78FD9A29E5E9C600122C8C /* timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F78FD9D29E5E9C600122C8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F78FD9F29E5E9C600122C8C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3F78FDA129E5E9C600122C8C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3F78FDA129E5E9C600122C8C /* TimerHomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerHomeScreenViewController.swift; sourceTree = "<group>"; };
 		3F78FDA429E5E9C600122C8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F78FDA629E5E9C700122C8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F78FDA929E5E9C700122C8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F78FDAB29E5E9C700122C8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F78FDB129E5F04400122C8C /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		3FE8EF9729E761C700B36BA4 /* StopWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StopWatchViewController.swift; path = timer/Controllers/StopWatchViewController.swift; sourceTree = SOURCE_ROOT; };
+		3FE8EF9929E8A49F00B36BA4 /* oh_my_god_vine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oh_my_god_vine.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,50 @@
 		3F78FD9C29E5E9C600122C8C /* timer */ = {
 			isa = PBXGroup;
 			children = (
-				3F78FD9D29E5E9C600122C8C /* AppDelegate.swift */,
-				3F78FD9F29E5E9C600122C8C /* SceneDelegate.swift */,
-				3F78FDA129E5E9C600122C8C /* ViewController.swift */,
-				3F78FDA329E5E9C600122C8C /* Main.storyboard */,
-				3F78FDA629E5E9C700122C8C /* Assets.xcassets */,
-				3F78FDA829E5E9C700122C8C /* LaunchScreen.storyboard */,
+				3F78FDB629E609C200122C8C /* Controllers */,
+				3F78FDB529E6098700122C8C /* Extra */,
+				3F78FDB429E6096F00122C8C /* Model */,
+				3F78FDB329E6096300122C8C /* View */,
 				3F78FDAB29E5E9C700122C8C /* Info.plist */,
 			);
 			path = timer;
+			sourceTree = "<group>";
+		};
+		3F78FDB329E6096300122C8C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F78FDA829E5E9C700122C8C /* LaunchScreen.storyboard */,
+				3F78FDA329E5E9C600122C8C /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3F78FDB429E6096F00122C8C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3F78FDB129E5F04400122C8C /* Clock.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3F78FDB529E6098700122C8C /* Extra */ = {
+			isa = PBXGroup;
+			children = (
+				3FE8EF9929E8A49F00B36BA4 /* oh_my_god_vine.mp3 */,
+				3F78FD9F29E5E9C600122C8C /* SceneDelegate.swift */,
+				3F78FD9D29E5E9C600122C8C /* AppDelegate.swift */,
+				3F78FDA629E5E9C700122C8C /* Assets.xcassets */,
+			);
+			path = Extra;
+			sourceTree = "<group>";
+		};
+		3F78FDB629E609C200122C8C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3FE8EF9729E761C700B36BA4 /* StopWatchViewController.swift */,
+				3F78FDA129E5E9C600122C8C /* TimerHomeScreenViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +168,7 @@
 			files = (
 				3F78FDAA29E5E9C700122C8C /* LaunchScreen.storyboard in Resources */,
 				3F78FDA729E5E9C700122C8C /* Assets.xcassets in Resources */,
+				3FE8EF9A29E8A49F00B36BA4 /* oh_my_god_vine.mp3 in Resources */,
 				3F78FDA529E5E9C600122C8C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,9 +180,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F78FDA229E5E9C600122C8C /* ViewController.swift in Sources */,
+				3F78FDA229E5E9C600122C8C /* TimerHomeScreenViewController.swift in Sources */,
 				3F78FD9E29E5E9C600122C8C /* AppDelegate.swift in Sources */,
+				3F78FDB229E5F04400122C8C /* Clock.swift in Sources */,
 				3F78FDA029E5E9C600122C8C /* SceneDelegate.swift in Sources */,
+				3FE8EF9829E761C700B36BA4 /* StopWatchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,8 +337,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -321,8 +364,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
