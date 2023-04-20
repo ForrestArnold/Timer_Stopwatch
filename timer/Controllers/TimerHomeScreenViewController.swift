@@ -13,16 +13,13 @@ class TimerHomeScreenViewController: UIViewController {
     var timerParamaters = MyClock(minTime: 1, maxTime: 50, startingTime: 100)
     var countdownTimer: Timer?
     var countdownSeconds = 0
+    var maxCountDownSeconds = 0
     var isPaused = false
     var timer = Timer()
     var player: AVAudioPlayer!
     
     
     @IBAction func onStopWatchPressed(_ sender: Any) {
-        guard let stopVC = storyboard?.instantiateViewController(withIdentifier: "stop_vc") as? StopWatchViewController else {
-            return
-        }
-        present(stopVC, animated: true)
     }
     
     func playSound() {
@@ -31,9 +28,7 @@ class TimerHomeScreenViewController: UIViewController {
         player!.play()
     }
     
-
     @IBOutlet weak var backgroundImage: UIImageView!
-    
     
     @IBOutlet var minLabelUI: UITextField!
     
@@ -51,7 +46,6 @@ class TimerHomeScreenViewController: UIViewController {
     
     @IBAction func onSetTimerPressed(_ sender: Any) {
     }
-    
     
     @IBOutlet var showTimerUI: UIButton!
     
@@ -87,6 +81,7 @@ class TimerHomeScreenViewController: UIViewController {
     
     @IBAction func onPlayButtonPressed(_ sender: Any) {
         self.view.endEditing(true)
+        playButtonUI.isEnabled = false
         if timerInputSwitchUI.isOn == true && playButtonUI.backgroundColor == UIColor.white && minLabelUI.text != "" && maxLabelUI.text != "" {
             playButtonUI.isHighlighted = true
             playButtonUI.setTitle("Playing", for: .normal)
@@ -106,27 +101,30 @@ class TimerHomeScreenViewController: UIViewController {
                     return
                 }
                     self.countdownSeconds -= 1
+                    self.countdownLabelUI.text = "\(self.countdownSeconds)"
                     if self.countdownSeconds == 0 {
                         self.countdownLabelUI.text = "Done!"
+                        self.playButtonUI.isEnabled = true
                         self.playSound()
                         timer.invalidate()
                         self.playButtonUI.backgroundColor = UIColor.white
                         self.playButtonUI.setTitle("Play", for: .normal)
                         self.playButtonUI.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 28)
-                    } else {
-                        self.countdownLabelUI.text = "\(self.countdownSeconds)"
                     }
                 }
             }
-        } else if timerInputSwitchUI.isOn == false && playButtonUI.backgroundColor == UIColor.white && setTimerToUI.text != "" {
+        }
+        else if timerInputSwitchUI.isOn == false && playButtonUI.backgroundColor == UIColor.white && setTimerToUI.text != "" {
+            countdownLabelUI.text = "\(countdownSeconds)"
             playButtonUI.backgroundColor = UIColor.green
             if setTimerToUI.text != nil {
                 guard let timerUI = Int(setTimerToUI.text ?? "")
                 else {
                     return
                 }
+                countdownLabelUI.text = "\(countdownSeconds)"
                 countdownSeconds = timerUI
-                countdownLabelUI.text = "\(String(describing: setTimerToUI))"
+                countdownLabelUI.text = setTimerToUI.text
                 countdownTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in guard let self = self else {
                     return
                 }
@@ -134,6 +132,7 @@ class TimerHomeScreenViewController: UIViewController {
                     if self.countdownSeconds == 0 {
                         self.countdownLabelUI.text = "Done!"
                         timer.invalidate()
+                        self.playButtonUI.isEnabled = true
                         self.playSound()
                         self.playButtonUI.backgroundColor = UIColor.white
                         self.playButtonUI.setTitle("Play", for: .normal)
@@ -151,6 +150,7 @@ class TimerHomeScreenViewController: UIViewController {
     @IBAction func onPauseButtonPressed(_ sender: Any) {
         if isPaused == false && playButtonUI.backgroundColor == UIColor.green && countdownSeconds > 0 {
             countdownTimer?.invalidate()
+            playButtonUI.isEnabled = false
             isPaused = true
             pauseButtonUI.setTitle("Resume", for: .normal)
             pauseButtonUI.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 28)
@@ -162,7 +162,7 @@ class TimerHomeScreenViewController: UIViewController {
             }
                 self.countdownSeconds -= 1
                 if self.countdownSeconds == 0 {
-                    self.countdownLabelUI.text = "Timer Done!!"
+                    self.countdownLabelUI.text = "Done!"
                     timer.invalidate()
                 } else {
                     self.countdownLabelUI.text = "\(self.countdownSeconds)"
@@ -171,7 +171,7 @@ class TimerHomeScreenViewController: UIViewController {
             isPaused = false
         }
     }
-        
+    
     
     @IBOutlet var stopButtonUI: UIButton!
     
@@ -179,6 +179,12 @@ class TimerHomeScreenViewController: UIViewController {
         if playButtonUI.backgroundColor == UIColor.green && pauseButtonUI.backgroundColor == UIColor.orange {
             playButtonUI.backgroundColor = UIColor.white
             countdownTimer?.invalidate()
+            playButtonUI.isEnabled = true
+            self.playButtonUI.setTitle("Play", for: .normal)
+            self.playButtonUI.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 28)
+            isPaused = false
+            pauseButtonUI.setTitle("Pause", for: .normal)
+            pauseButtonUI.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 28)
             timer.invalidate()
             countdownSeconds = 0
             countdownLabelUI.text = "0"
